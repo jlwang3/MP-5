@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/createGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Game"
+            tools:text="Create Game" />
+
+        <LinearLayout
+            android:id="@+id/invitationsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/invitations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Invitations" />
+
+            <LinearLayout
+                android:id="@+id/invitationsList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ongoingGamesGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ongoingGames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ongoing Games" />
+
+            <LinearLayout
+                android:id="@+id/ongoingGamesList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
