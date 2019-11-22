@@ -16,13 +16,11 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             LinearLayout tiles = findViewById(R.id.tiles);
             final View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
-            Button button1 = messageChunk.findViewById(R.id.button1);
-            Button button2 = messageChunk.findViewById(R.id.button2);
-            Button button3 = messageChunk.findViewById(R.id.button3);
-            Button button4 = messageChunk.findViewById(R.id.button4);
+            String random = "button" + Integer.toString((int) ((Math.random() * (3)) + 1));
+            Button button = messageChunk.findViewById(R.id.random);
             final MediaPlayer mp = MediaPlayer.create(this, R.raw.sample);
-            button1.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            button1.setOnClickListener(unused -> {
+            button.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            button.setOnClickListener(unused -> {
                 messageChunk.setVisibility(0);
                 mp.start();
             });
