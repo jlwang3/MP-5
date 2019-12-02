@@ -16,7 +16,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
         LinearLayout tiles = findViewById(R.id.tiles);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
 //            int random = (int) ((Math.random() * (3)) + 1);
 //            if (random == 1) {
