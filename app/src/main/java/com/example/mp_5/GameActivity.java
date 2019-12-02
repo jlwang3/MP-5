@@ -15,9 +15,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
-        for (int i = 0; i < 10; i++) {
-            LinearLayout tiles = findViewById(R.id.tiles);
-            final View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
+        LinearLayout tiles = findViewById(R.id.tiles);
+        for (int i = 0; i < 1; i++) {
+            View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
 //            int random = (int) ((Math.random() * (3)) + 1);
 //            if (random == 1) {
 //                Button
@@ -49,10 +49,17 @@ public class GameActivity extends AppCompatActivity {
             button4.setOnClickListener(unused -> {
                 endGame();
             });
+
+            tiles.addView(button1);
+            tiles.addView(button2);
+            tiles.addView(button3);
+            tiles.addView(button4);
         }
     }
     public void endGame() {
-        startActivity(new Intent(this, EndGameActivity.class).putExtra("score", score));
+        Intent intent = new Intent(this, EndGameActivity.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
         finish();
     }
 }
