@@ -16,8 +16,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
         LinearLayout tiles = findViewById(R.id.tiles);
-//        tiles.removeAllViews();
-//        for (int i = 0; i < 7; i++) {
+        tiles.removeAllViews();
+        for (int i = 0; i < 7; i++) {
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
 //            int random = (int) ((Math.random() * (3)) + 1);
 //            if (random == 1) {
@@ -30,7 +30,14 @@ public class GameActivity extends AppCompatActivity {
             Button button3 = messageChunk.findViewById(R.id.button3);
             Button button4 = messageChunk.findViewById(R.id.button4);
 
-            button1.setOnClickListener(unused -> {
+            button1.setVisibility(View.VISIBLE);
+            button2.setVisibility(View.VISIBLE);
+            button3.setVisibility(View.VISIBLE);
+            button4.setVisibility(View.VISIBLE);
+
+
+
+        button1.setOnClickListener(unused -> {
                 messageChunk.setVisibility(View.GONE);
                 score++;
             });
@@ -49,7 +56,7 @@ public class GameActivity extends AppCompatActivity {
 
             tiles.addView(messageChunk);
         }
-//    }
+    }
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
         intent.putExtra("score", score);
