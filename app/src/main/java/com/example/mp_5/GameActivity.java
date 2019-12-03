@@ -1,6 +1,7 @@
 package com.example.mp_5;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +26,14 @@ public class GameActivity extends AppCompatActivity {
             Button button4 = messageChunk.findViewById(R.id.button4);
             Button button1 = messageChunk.findViewById(R.id.button1);
 
+            button1.setBackgroundColor(Color.WHITE);
+            button2.setBackgroundColor(Color.WHITE);
+            button3.setBackgroundColor(Color.WHITE);
+            button4.setBackgroundColor(Color.WHITE);
+
+
             if (random == 1) {
-                button1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button1.setBackgroundColor(Color.BLACK);
                 button1.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
@@ -44,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else if (random == 2) {
-                button2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button2.setBackgroundColor(Color.BLACK);
                 button2.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
@@ -62,7 +69,7 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else if (random == 3) {
-                button3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button3.setBackgroundColor(Color.BLACK);
                 button3.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
@@ -80,7 +87,7 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else {
-                button4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button4.setBackgroundColor(Color.BLACK);
                 button4.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
