@@ -16,7 +16,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
         LinearLayout tiles = findViewById(R.id.tiles);
-        for (int i = 0; i < 7; i++) {
+//        tiles.removeAllViews();
+//        for (int i = 0; i < 7; i++) {
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
 //            int random = (int) ((Math.random() * (3)) + 1);
 //            if (random == 1) {
@@ -25,10 +26,6 @@ public class GameActivity extends AppCompatActivity {
             Button button1 = messageChunk.findViewById(R.id.button1);
 //            final MediaPlayer mp = MediaPlayer.create(this, R.raw.sample);
             button1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-//            button.setOnClickListener(unused -> {
-//                messageChunk.setVisibility(View.GONE);
-//                mp.start();
-//            });
             Button button2 = messageChunk.findViewById(R.id.button2);
             Button button3 = messageChunk.findViewById(R.id.button3);
             Button button4 = messageChunk.findViewById(R.id.button4);
@@ -50,12 +47,9 @@ public class GameActivity extends AppCompatActivity {
                 endGame();
             });
 
-            tiles.addView(button1);
-            tiles.addView(button2);
-            tiles.addView(button3);
-            tiles.addView(button4);
+            tiles.addView(messageChunk);
         }
-    }
+//    }
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
         intent.putExtra("score", score);
