@@ -19,16 +19,87 @@ public class GameActivity extends AppCompatActivity {
         tiles.removeAllViews();
         for (int i = 0; i < 7; i++) {
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
-//            int random = (int) ((Math.random() * (3)) + 1);
-//            if (random == 1) {
-//                Button
-//            }
-            Button button1 = messageChunk.findViewById(R.id.button1);
-//            final MediaPlayer mp = MediaPlayer.create(this, R.raw.sample);
-            button1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            int random = (int) ((Math.random() * (3)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
             Button button3 = messageChunk.findViewById(R.id.button3);
             Button button4 = messageChunk.findViewById(R.id.button4);
+            Button button1 = messageChunk.findViewById(R.id.button1);
+
+            if (random == 1) {
+                button1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button1.setOnClickListener(unused -> {
+                    messageChunk.setVisibility(View.GONE);
+                    score++;
+                });
+
+                button2.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button3.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button4.setOnClickListener(unused -> {
+                    endGame();
+                });
+            } else if (random == 2) {
+                button2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button2.setOnClickListener(unused -> {
+                    messageChunk.setVisibility(View.GONE);
+                    score++;
+                });
+
+                button1.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button3.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button4.setOnClickListener(unused -> {
+                    endGame();
+                });
+            } else if (random == 3) {
+                button3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button3.setOnClickListener(unused -> {
+                    messageChunk.setVisibility(View.GONE);
+                    score++;
+                });
+
+                button2.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button1.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button4.setOnClickListener(unused -> {
+                    endGame();
+                });
+            } else {
+                button4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button4.setOnClickListener(unused -> {
+                    messageChunk.setVisibility(View.GONE);
+                    score++;
+                });
+
+                button2.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button3.setOnClickListener(unused -> {
+                    endGame();
+                });
+
+                button1.setOnClickListener(unused -> {
+                    endGame();
+                });
+            }
+//            final MediaPlayer mp = MediaPlayer.create(this, R.raw.sample);
+
 
             button1.setVisibility(View.VISIBLE);
             button2.setVisibility(View.VISIBLE);
@@ -37,25 +108,11 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        button1.setOnClickListener(unused -> {
-                messageChunk.setVisibility(View.GONE);
-                score++;
-            });
 
-            button2.setOnClickListener(unused -> {
-                endGame();
-            });
 
-            button3.setOnClickListener(unused -> {
-                endGame();
-            });
-
-            button4.setOnClickListener(unused -> {
-                endGame();
-            });
-
-            tiles.addView(messageChunk);
+        tiles.addView(messageChunk);
         }
+
     }
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
