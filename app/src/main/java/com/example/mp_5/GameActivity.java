@@ -18,7 +18,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.game_activity);
         LinearLayout tiles = findViewById(R.id.tiles);
         tiles.removeAllViews();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
             int random = (int) ((Math.random() * (3)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
@@ -113,11 +113,7 @@ public class GameActivity extends AppCompatActivity {
             button3.setVisibility(View.VISIBLE);
             button4.setVisibility(View.VISIBLE);
 
-
-
-
-
-        tiles.addView(messageChunk);
+        tiles.addView(messageChunk, 0);
         }
 
     }
