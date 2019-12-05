@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Creates an end game screen.
+ */
 public class EndGameActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.end_game_activity);
+
+        // Get intent and score
         Intent intent = getIntent();
         int score = intent.getIntExtra("score", 0);
 
