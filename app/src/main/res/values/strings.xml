@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MP-5</string>
+    <string name="title">Piano Tiles</string>
+    <string name="start">Start</string>
 </resources>
