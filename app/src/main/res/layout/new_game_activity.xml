@@ -26,6 +26,14 @@
         android:gravity="center"
         android:text="@string/start" />
 
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:text="settings" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

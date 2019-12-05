@@ -15,15 +15,30 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.net.Inet4Address;
+
 public class GameActivity extends AppCompatActivity {
-    private int score;
+    private int score = 0;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
     private int chunks = 0;
+    int rows = 10;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
+
+        // Go to settings page
+        Button settings = findViewById(R.id.settings);
+        settings.setOnClickListener(v -> {
+            settings();
+        });
+
+        // Get intent from settings and set rows var
+        Intent intent = getIntent();
+        rows = intent.getIntExtra("rows", 10);
+
+        // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
@@ -43,10 +58,14 @@ public class GameActivity extends AppCompatActivity {
         sound3 = soundPool.load(this, R.raw.sound3, 1);
         sound4 = soundPool.load(this, R.raw.sound4, 1);
 
+        // Get tiles
         LinearLayout tiles = findViewById(R.id.tiles);
         tiles.removeAllViews();
-        for (int i = 0; i < 7; i++) {
+
+        // Put tiles
+        for (int i = 0; i < rows; i++) {
             chunks++;
+            // Inflate layout
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
             int random = (int) ((Math.random() * (3)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
@@ -187,6 +206,10 @@ public class GameActivity extends AppCompatActivity {
         soundPool = null;
     }
 
+    public void settings() {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
 
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);

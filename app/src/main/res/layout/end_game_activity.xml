@@ -11,7 +11,7 @@
         android:gravity="center"
         android:paddingTop="100dp"
         android:paddingBottom="100dp"
-        android:text="Game Over"
+        android:text="@string/game_over"
         android:textColor="#000000"
         android:textSize="36sp"
         app:fontFamily="monospace" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="200dp"
-        android:text="Score: "
+        android:text="@string/score"
         android:textSize="24sp"
         app:fontFamily="monospace" />
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-            android:text="Play Again" />
+            android:text="@string/play_again" />
 
         <Button
             android:id="@+id/main_menu"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:paddingBottom="10dp"
-            android:text="Main Menu" />
+            android:text="@string/main_menu" />
 
     </LinearLayout>
 

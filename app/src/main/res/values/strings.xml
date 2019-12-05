@@ -2,4 +2,8 @@
     <string name="app_name">MP-5</string>
     <string name="title">Piano Tiles</string>
     <string name="start">Start</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="play_again">Play Again</string>
+    <string name="score">Score:</string>
+    <string name="game_over">Game Over</string>
 </resources>
