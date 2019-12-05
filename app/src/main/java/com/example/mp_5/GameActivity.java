@@ -1,6 +1,7 @@
 package com.example.mp_5;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,6 +19,7 @@ public class GameActivity extends AppCompatActivity {
     private int score;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
+    private int chunks = 0;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ public class GameActivity extends AppCompatActivity {
         LinearLayout tiles = findViewById(R.id.tiles);
         tiles.removeAllViews();
         for (int i = 0; i < 7; i++) {
+            chunks++;
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
             int random = (int) ((Math.random() * (3)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
@@ -51,12 +54,21 @@ public class GameActivity extends AppCompatActivity {
             Button button4 = messageChunk.findViewById(R.id.button4);
             Button button1 = messageChunk.findViewById(R.id.button1);
 
+            button1.setBackgroundColor(Color.WHITE);
+            button2.setBackgroundColor(Color.WHITE);
+            button3.setBackgroundColor(Color.WHITE);
+            button4.setBackgroundColor(Color.WHITE);
+
             if (random == 1) {
-                button1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button1.setBackgroundColor(Color.BLACK);
                 button1.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
                     playSound(button1);
+
+                    if (score == chunks) {
+                        endGame();
+                    }
                 });
 
                 button2.setOnClickListener(unused -> {
@@ -71,11 +83,15 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else if (random == 2) {
-                button2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button2.setBackgroundColor(Color.BLACK);
                 button2.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
                     playSound(button2);
+
+                    if (score == chunks) {
+                        endGame();
+                    }
                 });
 
                 button1.setOnClickListener(unused -> {
@@ -90,11 +106,15 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else if (random == 3) {
-                button3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button3.setBackgroundColor(Color.BLACK);
                 button3.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
                     playSound(button3);
+
+                    if (score == chunks) {
+                        endGame();
+                    }
                 });
 
                 button2.setOnClickListener(unused -> {
@@ -109,11 +129,15 @@ public class GameActivity extends AppCompatActivity {
                     endGame();
                 });
             } else {
-                button4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                button4.setBackgroundColor(Color.BLACK);
                 button4.setOnClickListener(unused -> {
                     messageChunk.setVisibility(View.GONE);
                     score++;
                     playSound(button4);
+
+                    if (score == chunks) {
+                        endGame();
+                    }
                 });
 
                 button2.setOnClickListener(unused -> {
@@ -133,10 +157,6 @@ public class GameActivity extends AppCompatActivity {
             button2.setVisibility(View.VISIBLE);
             button3.setVisibility(View.VISIBLE);
             button4.setVisibility(View.VISIBLE);
-
-
-
-
 
             tiles.addView(messageChunk);
         }
@@ -171,6 +191,7 @@ public class GameActivity extends AppCompatActivity {
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
         intent.putExtra("score", score);
+        intent.putExtra("win", score == chunks);
         startActivity(intent);
         finish();
     }

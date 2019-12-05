@@ -17,6 +17,13 @@ public class EndGameActivity extends AppCompatActivity {
         // Get intent and score
         Intent intent = getIntent();
         int score = intent.getIntExtra("score", 0);
+        boolean win = intent.getBooleanExtra("win", false);
+
+        // Win Condition
+        if (win) {
+            TextView gameOver = findViewById(R.id.title);
+            gameOver.setText("You Win!");
+        }
 
         // Final Score
         TextView endScore = findViewById(R.id.score);
