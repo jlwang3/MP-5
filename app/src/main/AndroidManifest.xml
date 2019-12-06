@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EndGameActivity" />
+        <activity android:name=".Settings" />
         <activity android:name=".GameActivity" />
         <activity android:name=".NewGameActivity">
             <intent-filter>

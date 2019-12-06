@@ -209,6 +209,7 @@ public class GameActivity extends AppCompatActivity {
     public void settings() {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
+        finish();
     }
 
     public void endGame() {
