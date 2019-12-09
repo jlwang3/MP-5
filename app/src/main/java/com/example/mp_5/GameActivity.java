@@ -21,7 +21,6 @@ public class GameActivity extends AppCompatActivity {
     private int score = 0;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    private int chunks = 0;
     int rows = 10;
     int time = 10;
 
@@ -60,7 +59,6 @@ public class GameActivity extends AppCompatActivity {
 
         // Put tiles
         for (int i = 0; i < rows; i++) {
-            chunks++;
             // Inflate layout
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
             int random = (int) ((Math.random() * (3)) + 1);
@@ -74,6 +72,7 @@ public class GameActivity extends AppCompatActivity {
             button3.setBackgroundColor(Color.WHITE);
             button4.setBackgroundColor(Color.WHITE);
 
+            // Set random tile to be black
             if (random == 1) {
                 button1.setBackgroundColor(Color.BLACK);
                 button1.setOnClickListener(unused -> {
@@ -81,7 +80,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button1);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -104,7 +103,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button2);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -127,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button3);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -150,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button4);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -205,7 +204,7 @@ public class GameActivity extends AppCompatActivity {
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
         intent.putExtra("score", score);
-        intent.putExtra("win", score == chunks);
+        intent.putExtra("win", score == rows);
         startActivity(intent);
         finish();
     }

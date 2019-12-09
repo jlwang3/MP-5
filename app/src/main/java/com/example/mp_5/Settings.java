@@ -25,6 +25,13 @@ public class Settings extends AppCompatActivity {
         TextView timeText = findViewById(R.id.timeSet);
         Button done = findViewById(R.id.done);
 
+        // Get previous settings
+        Intent intent = getIntent();
+        rows = intent.getIntExtra("rows", 10);
+        time = intent.getIntExtra("time", 10);
+        rowsText.setText(rows);
+        timeText.setText(time + "s");
+
         // Set default time and rows
         rowsText.setText(rows);
         String setTime = time + "s";

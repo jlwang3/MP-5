@@ -50,6 +50,8 @@ public class NewGameActivity extends AppCompatActivity {
      */
     public void settings() {
         Intent intent = new Intent(this, Settings.class);
+        intent.putExtra("rows", rows);
+        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }
