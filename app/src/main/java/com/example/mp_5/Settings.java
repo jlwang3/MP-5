@@ -13,7 +13,8 @@ public class Settings extends AppCompatActivity {
     private int rows = 10;
     private int time = 10;
 
-    protected void OnCreate(final Bundle savedInstanceState) {
+
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
@@ -36,7 +37,7 @@ public class Settings extends AppCompatActivity {
         time = intent.getIntExtra("time", 10);
 
         // Set time and rows
-        rowsText.setText(rows);
+        rowsText.setText(Integer.toString(rows));
         String setTime = time + "s";
         timeText.setText(setTime);
 

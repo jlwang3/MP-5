@@ -6,4 +6,10 @@
     <string name="play_again">Play Again</string>
     <string name="score">Score:</string>
     <string name="game_over">Game Over</string>
+    <string name="rows">Rows</string>
+    <string name="settings">Settings</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="time_limit">Time Limit</string>
+    <string name="done">Done</string>
 </resources>

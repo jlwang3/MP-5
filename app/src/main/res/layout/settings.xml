@@ -15,7 +15,7 @@
         android:paddingTop="20dp"
         android:paddingRight="15dp"
         android:paddingBottom="20dp"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textSize="30sp"
         app:fontFamily="monospace" />
 
@@ -29,38 +29,36 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="100"
-            android:text="Rows      "
+            android:text="@string/rows"
             android:textSize="18sp"
             app:fontFamily="monospace" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="50"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/rowsMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/minus"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/numRows"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="10" />
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/rowsPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+"
+                android:text="@string/plus"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -75,38 +73,36 @@
 
         <TextView
             android:id="@+id/timeLimitTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="100"
-            android:text="Time Limit"
+            android:text="@string/time_limit"
             android:textSize="18sp"
             app:fontFamily="monospace" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="50"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/timeMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/minus"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/timeSet"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="25s" />
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/timePlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+"
+                android:text="@string/plus"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -122,6 +118,6 @@
             android:id="@+id/done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Done" />
+            android:text="@string/done" />
     </LinearLayout>
 </LinearLayout>
