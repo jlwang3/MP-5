@@ -35,12 +35,14 @@ public class EndGameActivity extends AppCompatActivity {
         Button playAgain = findViewById(R.id.new_game);
         playAgain.setOnClickListener(u -> {
             startActivity(new Intent(this, GameActivity.class));
+            finish();
         });
 
         // Main Menu button
         Button mainMenu = findViewById(R.id.main_menu);
         mainMenu.setOnClickListener(u -> {
             startActivity(new Intent(this, NewGameActivity.class));
+            finish();
         });
 
         endScore.setVisibility(View.VISIBLE);

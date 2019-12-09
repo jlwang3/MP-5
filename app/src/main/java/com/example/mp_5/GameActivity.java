@@ -61,7 +61,7 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < rows; i++) {
             // Inflate layout
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
-            int random = (int) ((Math.random() * (3)) + 1);
+            int random = (int) ((Math.random() * (4)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
             Button button3 = messageChunk.findViewById(R.id.button3);
             Button button4 = messageChunk.findViewById(R.id.button4);
