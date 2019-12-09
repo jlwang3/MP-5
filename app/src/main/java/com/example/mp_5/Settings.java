@@ -33,8 +33,8 @@ public class Settings extends AppCompatActivity {
 
         // Get previous settings
         Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 10);
-        time = intent.getIntExtra("time", 10);
+        rows = intent.getIntExtra("rows", 0);
+        time = intent.getIntExtra("time", 0);
 
         // Set time and rows
         rowsText.setText(String.format("%s", rows));

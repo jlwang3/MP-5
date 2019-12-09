@@ -16,10 +16,9 @@ public class NewGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_game_activity);
 
-        // Get intent from settings (if they've been set yet)
         Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 10);
-        time = intent.getIntExtra("time", 10);
+        intent.getIntExtra("rows", 0);
+        intent.getIntExtra("time", 0);
 
         // Create game button
         Button createGame = findViewById(R.id.createGame);
