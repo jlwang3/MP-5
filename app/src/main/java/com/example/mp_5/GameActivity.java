@@ -23,23 +23,17 @@ public class GameActivity extends AppCompatActivity {
     private int score = 0;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    private int chunks = 0;
-    private Timer timer;
     int rows = 10;
+    int time = 10;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
 
-        // Go to settings page
-        Button settings = findViewById(R.id.settings);
-        settings.setOnClickListener(v -> {
-            settings();
-        });
-
-        // Get intent from settings and set rows var
+        // Get rows and time from intent
         Intent intent = getIntent();
         rows = intent.getIntExtra("rows", 10);
+        time = intent.getIntExtra("time", 10);
 
         // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -67,10 +61,9 @@ public class GameActivity extends AppCompatActivity {
 
         // Put tiles
         for (int i = 0; i < rows; i++) {
-            chunks++;
             // Inflate layout
             View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
-            int random = (int) ((Math.random() * (3)) + 1);
+            int random = (int) ((Math.random() * (4)) + 1);
             Button button2 = messageChunk.findViewById(R.id.button2);
             Button button3 = messageChunk.findViewById(R.id.button3);
             Button button4 = messageChunk.findViewById(R.id.button4);
@@ -81,6 +74,7 @@ public class GameActivity extends AppCompatActivity {
             button3.setBackgroundColor(Color.WHITE);
             button4.setBackgroundColor(Color.WHITE);
 
+            // Set random tile to be black
             if (random == 1) {
                 button1.setBackgroundColor(Color.BLACK);
                 button1.setOnClickListener(unused -> {
@@ -88,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button1);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -111,7 +105,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button2);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -134,7 +128,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button3);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -157,7 +151,7 @@ public class GameActivity extends AppCompatActivity {
                     score++;
                     playSound(button4);
 
-                    if (score == chunks) {
+                    if (score == rows) {
                         endGame();
                     }
                 });
@@ -182,17 +176,6 @@ public class GameActivity extends AppCompatActivity {
 
             tiles.addView(messageChunk);
         }
-        timer = new Timer();
-        class RemoveTileTask extends TimerTask {
-            public void run() {
-                //remove lowest tile
-                View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
-                messageChunk.setVisibility(View.GONE);
-            }
-        }
-        final int FPS = 40;
-        TimerTask removeTileTask = new RemoveTileTask();
-        timer.scheduleAtFixedRate(removeTileTask, 0, 1000 / FPS);
     }
 
     public void playSound(View v) {
@@ -219,16 +202,10 @@ public class GameActivity extends AppCompatActivity {
         soundPool = null;
     }
 
-    public void settings() {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void endGame() {
         Intent intent = new Intent(this, EndGameActivity.class);
         intent.putExtra("score", score);
-        intent.putExtra("win", score == chunks);
+        intent.putExtra("win", score == rows);
         startActivity(intent);
         finish();
     }
