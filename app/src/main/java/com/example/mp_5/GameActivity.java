@@ -25,8 +25,8 @@ public class GameActivity extends AppCompatActivity {
     private int score = 0;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    int rows = 10;
-    int time = 10;
+    private int rows = 10;
+    private int time = 30;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,8 @@ public class GameActivity extends AppCompatActivity {
 
         // Get rows and time from intent
         Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 0);
-        time = intent.getIntExtra("time", 0);
+        rows = intent.getIntExtra("rows", 10);
+        time = intent.getIntExtra("time", 30);
 
         // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
