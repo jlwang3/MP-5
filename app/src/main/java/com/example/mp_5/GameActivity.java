@@ -23,20 +23,16 @@ public class GameActivity extends AppCompatActivity {
     private int sound1, sound2, sound3, sound4;
     private int chunks = 0;
     int rows = 10;
+    int time = 10;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
 
-        // Go to settings page
-        Button settings = findViewById(R.id.settings);
-        settings.setOnClickListener(v -> {
-            settings();
-        });
-
-        // Get intent from settings and set rows var
+        // Get rows and time from intent
         Intent intent = getIntent();
         rows = intent.getIntExtra("rows", 10);
+        time = intent.getIntExtra("time", 10);
 
         // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -204,12 +200,6 @@ public class GameActivity extends AppCompatActivity {
         super.onDestroy();
         soundPool.release();
         soundPool = null;
-    }
-
-    public void settings() {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-        finish();
     }
 
     public void endGame() {

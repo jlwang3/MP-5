@@ -2,8 +2,8 @@ package com.example.mp_5;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,13 +48,17 @@ public class Settings extends AppCompatActivity {
             timeText.setText(time + "s");
         });
         done.setOnClickListener(v -> {
-            // Set and pass intent
-            Intent intent = new Intent(this, NewGameActivity.class);
-            intent.putExtra("rows", rows);
-            intent.putExtra("time", time);
-            startActivity(intent);
-            finish();
+            saveSettings();
         });
+
+        // Make all visible
+        rowsPlus.setVisibility(View.VISIBLE);
+        rowsMinus.setVisibility(View.VISIBLE);
+        rowsText.setVisibility(View.VISIBLE);
+        timePlus.setVisibility(View.VISIBLE);
+        timeMinus.setVisibility(View.VISIBLE);
+        timeText.setVisibility(View.VISIBLE);
+        done.setVisibility(View.VISIBLE);
     }
 
     private void changeRows(int change) {
@@ -63,5 +67,14 @@ public class Settings extends AppCompatActivity {
 
     private void changeTime(int change) {
         time += change;
+    }
+
+    public void saveSettings() {
+        // Set and pass intent
+        Intent intent = new Intent(this, NewGameActivity.class);
+        intent.putExtra("rows", rows);
+        intent.putExtra("time", time);
+        startActivity(intent);
+        finish();
     }
 }
