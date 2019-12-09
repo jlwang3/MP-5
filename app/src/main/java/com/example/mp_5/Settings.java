@@ -11,16 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Settings extends AppCompatActivity {
     private int rows = 10;
-    private int time = 10;
-
+//    private int time = 10;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
         // Clear view
-        LinearLayout settings = findViewById(R.id.allSettings);
-        settings.removeAllViews();
+//        LinearLayout settings = findViewById(R.id.allSettings);
+//        settings.removeAllViews();
 
         // Get buttons and text
         Button rowsPlus = findViewById(R.id.rowsPlus);
@@ -33,10 +32,11 @@ public class Settings extends AppCompatActivity {
 
         // Get previous settings
         Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 10);
-        time = intent.getIntExtra("time", 10);
+        rows = intent.getIntExtra("rows", 0);
+//        time = intent.getIntExtra("time", 10);
 
         // Set time and rows
+        System.out.println(rowsText == null);
         rowsText.setText(String.format("%s", rows));
 //        String setTime = time + "s";
 //        timeText.setText(setTime);
@@ -44,11 +44,11 @@ public class Settings extends AppCompatActivity {
         // Set click listeners
         rowsPlus.setOnClickListener(v -> {
             changeRows(1);
-            rowsText.setText(rows);
+            rowsText.setText(rows + "");
         });
         rowsMinus.setOnClickListener(v -> {
             changeRows(-1);
-            rowsText.setText(rows);
+            rowsText.setText(rows + "");
         });
 //        timePlus.setOnClickListener(v -> {
 //            changeTime(5);
@@ -84,7 +84,7 @@ public class Settings extends AppCompatActivity {
         // Set and pass intent
         Intent intent = new Intent(this, NewGameActivity.class);
         intent.putExtra("rows", rows);
-        intent.putExtra("time", time);
+//        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }
