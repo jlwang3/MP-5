@@ -84,7 +84,7 @@ public class Settings extends AppCompatActivity {
         // Set and pass intent
         Intent intent = new Intent(this, NewGameActivity.class);
         intent.putExtra("rows", rows);
-//        intent.putExtra("time", time);
+        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }
