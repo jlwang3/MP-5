@@ -16,12 +16,15 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.net.Inet4Address;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
     private int score = 0;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
     private int chunks = 0;
+    private Timer timer;
     int rows = 10;
 
     protected void onCreate(final Bundle savedInstanceState) {
@@ -179,7 +182,17 @@ public class GameActivity extends AppCompatActivity {
 
             tiles.addView(messageChunk);
         }
-
+        timer = new Timer();
+        class RemoveTileTask extends TimerTask {
+            public void run() {
+                //remove lowest tile
+                View messageChunk = getLayoutInflater().inflate(R.layout.layout, tiles, false);
+                messageChunk.setVisibility(View.GONE);
+            }
+        }
+        final int FPS = 40;
+        TimerTask removeTileTask = new RemoveTileTask();
+        timer.scheduleAtFixedRate(removeTileTask, 0, 1000 / FPS);
     }
 
     public void playSound(View v) {
