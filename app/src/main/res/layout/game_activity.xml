@@ -10,6 +10,7 @@
         android:layout_width="228dp"
         android:layout_height="78dp"
         android:layout_gravity="top"
+        android:textSize="36sp"
         android:visibility="visible"></TextView>
 
     <LinearLayout

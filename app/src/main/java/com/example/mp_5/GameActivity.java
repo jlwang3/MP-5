@@ -180,7 +180,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         TextView timer = findViewById(R.id.timer);
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(time * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
             }
