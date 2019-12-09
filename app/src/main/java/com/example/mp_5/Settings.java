@@ -26,9 +26,9 @@ public class Settings extends AppCompatActivity {
         Button rowsPlus = findViewById(R.id.rowsPlus);
         Button rowsMinus = findViewById(R.id.rowsMinus);
         TextView rowsText = findViewById(R.id.numRows);
-        Button timePlus = findViewById(R.id.timePlus);
-        Button timeMinus = findViewById(R.id.timeMinus);
-        TextView timeText = findViewById(R.id.timeSet);
+//        Button timePlus = findViewById(R.id.timePlus);
+//        Button timeMinus = findViewById(R.id.timeMinus);
+//        TextView timeText = findViewById(R.id.timeSet);
         Button done = findViewById(R.id.done);
 
         // Get previous settings
@@ -37,9 +37,9 @@ public class Settings extends AppCompatActivity {
         time = intent.getIntExtra("time", 10);
 
         // Set time and rows
-        rowsText.setText(Integer.toString(rows));
-        String setTime = time + "s";
-        timeText.setText(setTime);
+        rowsText.setText(String.format("%s", rows));
+//        String setTime = time + "s";
+//        timeText.setText(setTime);
 
         // Set click listeners
         rowsPlus.setOnClickListener(v -> {
@@ -50,14 +50,14 @@ public class Settings extends AppCompatActivity {
             changeRows(-1);
             rowsText.setText(rows);
         });
-        timePlus.setOnClickListener(v -> {
-            changeTime(5);
-            timeText.setText(time + "s");
-        });
-        timeMinus.setOnClickListener(v -> {
-            changeTime(-5);
-            timeText.setText(time + "s");
-        });
+//        timePlus.setOnClickListener(v -> {
+//            changeTime(5);
+//            timeText.setText(time + "s");
+//        });
+//        timeMinus.setOnClickListener(v -> {
+//            changeTime(-5);
+//            timeText.setText(time + "s");
+//        });
         done.setOnClickListener(v -> {
             saveSettings();
         });
@@ -66,9 +66,9 @@ public class Settings extends AppCompatActivity {
         rowsPlus.setVisibility(View.VISIBLE);
         rowsMinus.setVisibility(View.VISIBLE);
         rowsText.setVisibility(View.VISIBLE);
-        timePlus.setVisibility(View.VISIBLE);
-        timeMinus.setVisibility(View.VISIBLE);
-        timeText.setVisibility(View.VISIBLE);
+//        timePlus.setVisibility(View.VISIBLE);
+//        timeMinus.setVisibility(View.VISIBLE);
+//        timeText.setVisibility(View.VISIBLE);
         done.setVisibility(View.VISIBLE);
     }
 
@@ -76,9 +76,9 @@ public class Settings extends AppCompatActivity {
         rows += change;
     }
 
-    private void changeTime(int change) {
-        time += change;
-    }
+//    private void changeTime(int change) {
+//        time += change;
+//    }
 
     public void saveSettings() {
         // Set and pass intent
