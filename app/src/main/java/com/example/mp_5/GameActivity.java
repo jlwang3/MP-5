@@ -8,10 +8,12 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,8 +34,8 @@ public class GameActivity extends AppCompatActivity {
 
         // Get rows and time from intent
         Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 10);
-        time = intent.getIntExtra("time", 10);
+        rows = intent.getIntExtra("rows", 0);
+        time = intent.getIntExtra("time", 0);
 
         // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -176,6 +178,16 @@ public class GameActivity extends AppCompatActivity {
 
             tiles.addView(messageChunk);
         }
+
+        TextView timer = findViewById(R.id.timer);
+        new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timer.setText("second remaining: " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                endGame();
+            }
+        }.start();
     }
 
     public void playSound(View v) {
