@@ -22,20 +22,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
-    private int score = 0;
+    private static int score;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    private int rows = 10;
-    private int time = 30;
+    private static int rows = 10;
+    private static int time = 30;
+    private static boolean win = false;
+    private CountDownTimer countDownTimer;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
 
-        // Get rows and time from intent
-        Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 10);
-        time = intent.getIntExtra("time", 30);
+        score = 0;
+        win = false;
 
         // SoundPool Init
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -60,6 +60,16 @@ public class GameActivity extends AppCompatActivity {
         // Get tiles
         LinearLayout tiles = findViewById(R.id.tiles);
         tiles.removeAllViews();
+
+        TextView timer = findViewById(R.id.timer);
+        countDownTimer = new CountDownTimer(time * 1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timer.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                endGame();
+            }
+        }.start();
 
         // Put tiles
         for (int i = 0; i < rows; i++) {
@@ -179,15 +189,6 @@ public class GameActivity extends AppCompatActivity {
             tiles.addView(messageChunk);
         }
 
-        TextView timer = findViewById(R.id.timer);
-        new CountDownTimer(time * 1000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timer.setText("" + millisUntilFinished / 1000);
-            }
-            public void onFinish() {
-                endGame();
-            }
-        }.start();
     }
 
     public void playSound(View v) {
@@ -214,10 +215,38 @@ public class GameActivity extends AppCompatActivity {
         soundPool = null;
     }
 
+    public static int getRows() {
+        return rows;
+    }
+
+    public static int getTime() {
+        return time;
+    }
+
+    public static boolean isWin() {
+        return win;
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void setRows(int rows) {
+        GameActivity.rows = rows;
+    }
+
+    public static void setTime(int time) {
+        GameActivity.time = time;
+    }
+
+    public static void setWin(boolean isWin) {
+        GameActivity.win = isWin;
+    }
+
     public void endGame() {
+        countDownTimer.cancel();
+        setWin(score == rows);
         Intent intent = new Intent(this, EndGameActivity.class);
-        intent.putExtra("score", score);
-        intent.putExtra("win", score == rows);
         startActivity(intent);
         finish();
     }

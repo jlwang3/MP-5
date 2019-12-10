@@ -9,16 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
  * Creates the title screen.
  */
 public class NewGameActivity extends AppCompatActivity {
-    int rows = 10;
-    int time = 10;
+    int rows;
+    int time;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_game_activity);
 
-        Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 0);
-        time = intent.getIntExtra("time", 0);
+        rows = GameActivity.getRows();
+        time = GameActivity.getTime();
 
         // Create game button
         Button createGame = findViewById(R.id.createGame);
@@ -38,8 +37,6 @@ public class NewGameActivity extends AppCompatActivity {
      */
     public void createGameClicked() {
         Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("rows", rows);
-        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }
@@ -49,8 +46,6 @@ public class NewGameActivity extends AppCompatActivity {
      */
     public void settings() {
         Intent intent = new Intent(this, Settings.class);
-        intent.putExtra("rows", rows);
-        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }

@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Settings extends AppCompatActivity {
-    private int rows = 10;
-    private int time = 10;
+    int rows;
+    int time;
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +31,8 @@ public class Settings extends AppCompatActivity {
         Button done = findViewById(R.id.done);
 
         // Get previous settings
-        Intent intent = getIntent();
-        rows = intent.getIntExtra("rows", 0);
-        time = intent.getIntExtra("time", 10);
+        rows = GameActivity.getRows();
+        time = GameActivity.getTime();
 
         // Set time and rows
         System.out.println(rowsText == null);
@@ -74,17 +73,17 @@ public class Settings extends AppCompatActivity {
 
     private void changeRows(int change) {
         rows += change;
+        GameActivity.setRows(rows);
     }
 
     private void changeTime(int change) {
         time += change;
+        GameActivity.setTime(time);
     }
 
     public void saveSettings() {
         // Set and pass intent
         Intent intent = new Intent(this, NewGameActivity.class);
-        intent.putExtra("rows", rows);
-        intent.putExtra("time", time);
         startActivity(intent);
         finish();
     }

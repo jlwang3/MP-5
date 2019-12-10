@@ -15,26 +15,22 @@ public class EndGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.end_game_activity);
 
-        // Get intent and score
-        Intent intent = getIntent();
-        int score = intent.getIntExtra("score", 0);
-        boolean win = intent.getBooleanExtra("win", false);
-
         // Win Condition
-        if (win) {
+        if (GameActivity.isWin()) {
             TextView gameOver = findViewById(R.id.title);
             gameOver.setText("You Win!");
         }
 
         // Final Score
         TextView endScore = findViewById(R.id.score);
-        String finalScore = "Score: " + score;
+        String finalScore = "Score: " + GameActivity.getScore();
         endScore.setText(finalScore);
 
         // Play Again button
         Button playAgain = findViewById(R.id.new_game);
         playAgain.setOnClickListener(u -> {
             startActivity(new Intent(this, GameActivity.class));
+            GameActivity.setWin(false);
             finish();
         });
 
