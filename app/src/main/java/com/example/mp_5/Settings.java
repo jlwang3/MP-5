@@ -17,10 +17,6 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
-        // Clear view
-//        LinearLayout settings = findViewById(R.id.allSettings);
-//        settings.removeAllViews();
-
         // Get buttons and text
         Button rowsPlus = findViewById(R.id.rowsPlus);
         Button rowsMinus = findViewById(R.id.rowsMinus);
@@ -72,12 +68,16 @@ public class Settings extends AppCompatActivity {
     }
 
     private void changeRows(int change) {
-        rows += change;
+        if (rows + change > 0) {
+            rows += change;
+        }
         GameActivity.setRows(rows);
     }
 
     private void changeTime(int change) {
-        time += change;
+        if (time + change > 0) {
+            time += change;
+        }
         GameActivity.setTime(time);
     }
 
