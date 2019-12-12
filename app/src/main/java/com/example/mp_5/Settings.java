@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,14 +67,14 @@ public class Settings extends AppCompatActivity {
     }
 
     private void changeRows(int change) {
-        if (rows + change > 0) {
+        if (rows + change > 0 && rows + change < 50) {
             rows += change;
         }
         GameActivity.setRows(rows);
     }
 
     private void changeTime(int change) {
-        if (time + change > 0) {
+        if (time + change > 0 && rows + change < 120) {
             time += change;
         }
         GameActivity.setTime(time);
